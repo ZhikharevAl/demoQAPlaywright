@@ -1,7 +1,7 @@
 package src.demoqa.pages
 
 import com.microsoft.playwright.Page
-import java.util.*
+import java.util.Locale
 
 object RegistrationFormLocators {
     const val FIRST_NAME_INPUT = "#firstName"
@@ -71,5 +71,4 @@ class RegistrationFormPage(page: Page) : BasePage(page) {
             else -> ""
         }
     }
-
 }
