@@ -1,6 +1,7 @@
 package src.demoqa.pages
 
 import com.microsoft.playwright.Page
+import java.util.*
 
 object RegistrationFormLocators {
     const val FIRST_NAME_INPUT = "#firstName"
@@ -8,6 +9,9 @@ object RegistrationFormLocators {
     const val EMAIL = "#userEmail"
     const val PHONE_NUMBER = "#userNumber"
     const val CURRENT_ADDRESS = "#currentAddress"
+    const val GENDER_MALE = "//label[@for='gender-radio-1']"
+    const val GENDER_FEMALE = "//label[@for='gender-radio-2']"
+    const val GENDER_OTHER = "//label[@for='gender-radio-3']"
 }
 
 class RegistrationFormPage(page: Page) : BasePage(page) {
@@ -50,4 +54,22 @@ class RegistrationFormPage(page: Page) : BasePage(page) {
     fun getCurrentAddressValue(): String {
         return inputValue(RegistrationFormLocators.CURRENT_ADDRESS)
     }
+
+    fun selectGenderOption(gender: String) {
+        when (gender.lowercase(Locale.getDefault())) {
+            "male" -> click(RegistrationFormLocators.GENDER_MALE)
+            "female" -> click(RegistrationFormLocators.GENDER_FEMALE)
+            "other" -> click(RegistrationFormLocators.GENDER_OTHER)
+        }
+    }
+
+    fun getGenderValue(): String {
+        return when {
+            isChecked(RegistrationFormLocators.GENDER_MALE) -> "Male"
+            isChecked(RegistrationFormLocators.GENDER_FEMALE) -> "Female"
+            isChecked(RegistrationFormLocators.GENDER_OTHER) -> "Other"
+            else -> ""
+        }
+    }
+
 }
