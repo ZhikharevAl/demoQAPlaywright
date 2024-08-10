@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm") version "1.9.23"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
-    id("io.qameta.allure") version "2.11.2" // Добавьте эту строку
+    id("io.qameta.allure") version "2.11.2"
 }
 
 group = "org.example"
@@ -42,4 +42,16 @@ tasks.test {
 
 kotlin {
     jvmToolchain(21)
+}
+
+allure {
+    version.set(allureVersion)
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
 }
