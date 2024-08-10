@@ -55,3 +55,12 @@ allure {
         }
     }
 }
+
+// Задача для установки Playwright
+tasks.register("playwrightInstall") {
+    doLast {
+        exec {
+            commandLine("npx", "playwright", "install", "--with-deps")
+        }
+    }
+}
