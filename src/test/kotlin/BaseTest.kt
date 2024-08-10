@@ -16,7 +16,7 @@ open class BaseTest {
         browser =
             playwright.chromium().launch(
                 BrowserType.LaunchOptions().apply {
-                    headless = false
+                    headless = true
                 },
             )
         page = browser.newPage()
