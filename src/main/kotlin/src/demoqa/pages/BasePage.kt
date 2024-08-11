@@ -27,13 +27,17 @@ abstract class BasePage(private val page: Page) {
         findElement(locator).click()
     }
 
-    @Step("Клик по элементу с текстом '{text}'")
-    protected fun clickByText(text: String) {
-        page.getByText(text).click()
-    }
-
     @Step("Проверка, выбран ли элемент с локатором '{locator}'")
     protected fun isChecked(locator: String): Boolean {
         return findElement(locator).isChecked
+    }
+
+    @Step("Нажатие на клавишу ENTER")
+    protected fun pressEnter() {
+        page.keyboard().press("Enter")
+    }
+
+    protected fun getElementsTexts(locator: String): List<String> {
+        return page.locator(locator).allInnerTexts()
     }
 }
