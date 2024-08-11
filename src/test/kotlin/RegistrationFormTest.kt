@@ -1,11 +1,14 @@
-
 import io.qameta.allure.Allure.step
 import io.qameta.allure.Description
 import io.qameta.allure.Epic
 import io.qameta.allure.Feature
+import io.qameta.allure.Issue
+import io.qameta.allure.Link
+import io.qameta.allure.Owner
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
+import io.qameta.allure.TmsLink
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -17,6 +20,9 @@ import kotlin.test.assertTrue
 
 @Epic("Тестирование формы регистрации")
 @Feature("Заполнение полей формы")
+@Owner("QA Team")
+@Issue("REGFORM-123")
+@TmsLink("TC-456")
 class RegistrationFormTest : BaseTest() {
     @Test
     @Story("Общее описание тестов формы регистрации")
@@ -34,6 +40,8 @@ class RegistrationFormTest : BaseTest() {
     </ul>
     """,
     )
+    @Severity(SeverityLevel.BLOCKER)
+    @Link("https://demoqa.com/automation-practice-form", name = "Registration Form")
     fun overviewTest() {
         // Этот тест может быть пустым или содержать общую логику
         // Его основная цель - предоставить общее описание для отчета Allure
@@ -42,11 +50,10 @@ class RegistrationFormTest : BaseTest() {
     @Test
     @Story("Пользователь может заполнить имя и фамилию")
     @DisplayName("Тест заполнения полей 'Имя' и 'Фамилия'")
-    @Description(
-        "Этот тест проверяет корректность заполнения " +
-            "полей 'Имя' и 'Фамилия' в форме регистрации.",
-    )
+    @Description("Этот тест проверяет корректность заполнения полей 'Имя' и 'Фамилия' в форме регистрации.")
     @Severity(SeverityLevel.CRITICAL)
+    @Issue("REGFORM-124")
+    @TmsLink("TC-457")
     fun testFirstNameAndLastName() {
         val firstName = FakerUtil.generateName()
         val lastName = FakerUtil.generateLastName()
@@ -76,11 +83,10 @@ class RegistrationFormTest : BaseTest() {
     @Test
     @Story("Пользователь может заполнить email")
     @DisplayName("Тест заполнения поля 'Email'")
-    @Description(
-        "Этот тест проверяет корректность заполнения " +
-            "поля 'Email' в форме регистрации.",
-    )
+    @Description("Этот тест проверяет корректность заполнения поля 'Email' в форме регистрации.")
     @Severity(SeverityLevel.NORMAL)
+    @Issue("REGFORM-125")
+    @TmsLink("TC-458")
     fun testEmail() {
         val email = FakerUtil.generateEmail()
         val registrationFormPage = RegistrationFormPage(page)
@@ -99,11 +105,10 @@ class RegistrationFormTest : BaseTest() {
     @Test
     @Story("Пользователь может заполнить номер телефона")
     @DisplayName("Тест заполнения поля 'Номер телефона'")
-    @Description(
-        "Этот тест проверяет корректность заполнения " +
-            "поля 'Номер телефона' в форме регистрации.",
-    )
+    @Description("Этот тест проверяет корректность заполнения поля 'Номер телефона' в форме регистрации.")
     @Severity(SeverityLevel.NORMAL)
+    @Issue("REGFORM-126")
+    @TmsLink("TC-459")
     fun testPhoneNumber() {
         val phoneNumber = FakerUtil.generatePhoneNumber()
         val registrationFormPage = RegistrationFormPage(page)
@@ -124,6 +129,8 @@ class RegistrationFormTest : BaseTest() {
     @DisplayName("Тест заполнения поля 'Текущий адрес'")
     @Description("Этот тест проверяет корректность заполнения поля 'Текущий адрес' в форме регистрации.")
     @Severity(SeverityLevel.NORMAL)
+    @Issue("REGFORM-127")
+    @TmsLink("TC-460")
     fun testCurrentAddress() {
         val currentAddress = FakerUtil.generateCurrentAddress()
         val registrationFormPage = RegistrationFormPage(page)
@@ -141,8 +148,15 @@ class RegistrationFormTest : BaseTest() {
 
     @ParameterizedTest
     @ValueSource(strings = ["Male", "Female", "Other"])
+    @Story("Пользователь может выбрать пол")
+    @DisplayName("Тест выбора пола")
+    @Description("Этот тест проверяет возможность выбора различных опций пола")
+    @Severity(SeverityLevel.NORMAL)
+    @Issue("REGFORM-128")
+    @TmsLink("TC-461")
     fun testGenderOption(gender: String) {
         val registrationFormPage = RegistrationFormPage(page)
+
         step("Выбор пола '$gender'")
         registrationFormPage.selectGenderOption(gender)
 
@@ -160,10 +174,19 @@ class RegistrationFormTest : BaseTest() {
     @Description("Этот тест проверяет возможность выбора различных хобби")
     @Severity(SeverityLevel.NORMAL)
     @Story("Пользователь может выбрать различные хобби")
+    @Issue("REGFORM-129")
+    @TmsLink("TC-462")
     fun testSelectHobby(hobby: String) {
         val registrationFormPage = RegistrationFormPage(page)
+
+        step("Выбор хобби '$hobby'")
         registrationFormPage.selectHobby(hobby)
-        assertTrue(registrationFormPage.isHobbySelected(hobby), "Хобби '$hobby' не было выбрано")
+
+        step("Проверка выбора хобби '$hobby'")
+        assertTrue(
+            registrationFormPage.isHobbySelected(hobby),
+            "Хобби '$hobby' не было выбрано",
+        )
     }
 
     @Test
@@ -171,16 +194,56 @@ class RegistrationFormTest : BaseTest() {
     @Description("Этот тест проверяет возможность выбора всех хобби одновременно")
     @Severity(SeverityLevel.NORMAL)
     @Story("Пользователь может выбрать все хобби")
+    @Issue("REGFORM-130")
+    @TmsLink("TC-463")
     fun testSelectAllHobbies() {
         val registrationFormPage = RegistrationFormPage(page)
         val hobbies = listOf("Sports", "Reading", "Music")
 
+        step("Выбор всех хобби")
         hobbies.forEach { hobby ->
             registrationFormPage.selectHobby(hobby)
         }
 
+        step("Проверка выбора всех хобби")
         hobbies.forEach { hobby ->
-            assertTrue(registrationFormPage.isHobbySelected(hobby), "Хобби '$hobby' не было выбрано")
+            assertTrue(
+                registrationFormPage.isHobbySelected(hobby),
+                "Хобби '$hobby' не было выбрано",
+            )
+        }
+    }
+
+    @Test
+    @DisplayName("Заполнение поля Subjects")
+    @Description("Этот тест проверяет корректность заполнения поля 'Subjects'")
+    @Severity(SeverityLevel.TRIVIAL)
+    @Story("Пользователь может заполнить поле 'Subjects'")
+    @Issue("REGFORM-131")
+    @TmsLink("TC-464")
+    fun testSubjects() {
+        val registrationFormPage = RegistrationFormPage(page)
+        val subjects = listOf("Maths", "English", "Hindi")
+
+        step("Заполнение поля 'Subjects'")
+        registrationFormPage.fillSubjects(subjects)
+
+        step("Проверка количества введенных предметов")
+        val enteredSubjects = registrationFormPage.getSubjects()
+        assertEquals(
+            subjects.size,
+            enteredSubjects.size,
+            "Количество введенных '$subjects' не совпадает",
+        )
+
+        step("Проверка корректности введенных предметов")
+        registrationFormPage.verifySubjects(subjects)
+        subjects.forEach { expectedSubject ->
+            val actualSubjects = registrationFormPage.getSubjects()
+            assertTrue(
+                actualSubjects.contains(expectedSubject),
+                "Ожидаемый предмет '$expectedSubject' не найден среди актуальных предметов",
+            )
         }
     }
 }
