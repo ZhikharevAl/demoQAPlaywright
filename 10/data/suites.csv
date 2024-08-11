@@ -1,0 +1,24 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Aug 11 15:35:05 GMT 2024","Sun Aug 11 15:35:08 GMT 2024","2677","","RegistrationFormTest","","RegistrationFormTest","testSelectAllHobbies","Выбор всех хобби","Этот тест проверяет возможность выбора всех хобби одновременно"
+"passed","Sun Aug 11 15:34:47 GMT 2024","Sun Aug 11 15:34:50 GMT 2024","2869","","RegistrationFormTest","","RegistrationFormTest","testSelectHobby","Выбор хобби [2] Reading","Этот тест проверяет возможность выбора различных хобби"
+"passed","Sun Aug 11 15:35:00 GMT 2024","Sun Aug 11 15:35:04 GMT 2024","3121","","RegistrationFormTest","","RegistrationFormTest","testCurrentAddress","Тест заполнения поля 'Текущий адрес'","Этот тест проверяет корректность заполнения поля 'Текущий адрес' в форме регистрации."
+"passed","Sun Aug 11 15:34:40 GMT 2024","Sun Aug 11 15:34:43 GMT 2024","3323","","RegistrationFormTest","","RegistrationFormTest","testEmail","Тест заполнения поля 'Email'","Этот тест проверяет корректность заполнения поля 'Email' в форме регистрации."
+"passed","Sun Aug 11 15:34:57 GMT 2024","Sun Aug 11 15:35:00 GMT 2024","2908","","RegistrationFormTest","","RegistrationFormTest","testGenderOption","testGenderOption(String) [3] Other",""
+"passed","Sun Aug 11 15:34:37 GMT 2024","Sun Aug 11 15:34:40 GMT 2024","2941","","RegistrationFormTest","","RegistrationFormTest","overviewTest","overviewTest()","
+    <h2>Тестирование формы регистрации на сайте</h2>
+    <p>Этот набор тестов проверяет функциональность формы регистрации, включая:</p>
+    <ul>
+        <li>Заполнение всех полей формы</li>
+        <li>Выбор Имени и Фамилии</li>
+        <li>Выбор различных опций (пол, хобби, предметы)</li>
+        <li>Загрузку изображения</li>
+        <li>Выбор даты рождения</li>
+        <li>Выбор штата и города</li>
+    </ul>
+    "
+"passed","Sun Aug 11 15:34:50 GMT 2024","Sun Aug 11 15:34:53 GMT 2024","3082","","RegistrationFormTest","","RegistrationFormTest","testSelectHobby","Выбор хобби [3] Music","Этот тест проверяет возможность выбора различных хобби"
+"passed","Sun Aug 11 15:35:04 GMT 2024","Sun Aug 11 15:35:05 GMT 2024","1740","","RegistrationFormTest","","RegistrationFormTest","testFirstNameAndLastName","Тест заполнения полей 'Имя' и 'Фамилия'","Этот тест проверяет корректность заполнения полей 'Имя' и 'Фамилия' в форме регистрации."
+"passed","Sun Aug 11 15:34:43 GMT 2024","Sun Aug 11 15:34:47 GMT 2024","3456","","RegistrationFormTest","","RegistrationFormTest","testSelectHobby","Выбор хобби [1] Sports","Этот тест проверяет возможность выбора различных хобби"
+"passed","Sun Aug 11 15:34:53 GMT 2024","Sun Aug 11 15:34:55 GMT 2024","1749","","RegistrationFormTest","","RegistrationFormTest","testGenderOption","testGenderOption(String) [1] Male",""
+"passed","Sun Aug 11 15:34:23 GMT 2024","Sun Aug 11 15:34:37 GMT 2024","14135","","RegistrationFormTest","","RegistrationFormTest","testPhoneNumber","Тест заполнения поля 'Номер телефона'","Этот тест проверяет корректность заполнения поля 'Номер телефона' в форме регистрации."
+"passed","Sun Aug 11 15:34:55 GMT 2024","Sun Aug 11 15:34:57 GMT 2024","2887","","RegistrationFormTest","","RegistrationFormTest","testGenderOption","testGenderOption(String) [2] Female",""
