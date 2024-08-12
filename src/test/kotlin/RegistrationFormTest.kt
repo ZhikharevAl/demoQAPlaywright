@@ -9,6 +9,7 @@ import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
 import io.qameta.allure.TmsLink
+import org.apache.logging.log4j.kotlin.Logging
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -23,7 +24,7 @@ import kotlin.test.assertTrue
 @Owner("QA Team")
 @Issue("REGFORM-123")
 @TmsLink("TC-456")
-class RegistrationFormTest : BaseTest() {
+class RegistrationFormTest : BaseTest(), Logging {
     @Test
     @Story("Общее описание тестов формы регистрации")
     @Description(
@@ -55,15 +56,21 @@ class RegistrationFormTest : BaseTest() {
     @Issue("REGFORM-124")
     @TmsLink("TC-457")
     fun testFirstNameAndLastName() {
+        logger.info { "Начало теста заполнения полей 'Имя' и 'Фамилия'" }
+
         val firstName = FakerUtil.generateName()
         val lastName = FakerUtil.generateLastName()
         val registrationFormPage = RegistrationFormPage(page)
 
+        logger.debug { "Сгенерированное имя: $firstName, фамилия: $lastName" }
+
         step("Заполнение поля 'Имя' значением $firstName")
         registrationFormPage.enterFirstName(firstName)
+        logger.info { "Поле 'Имя' заполнено значением: $firstName" }
 
         step("Заполнение поля 'Фамилия' значением $lastName")
         registrationFormPage.enterLastName(lastName)
+        logger.info { "Поле 'Фамилия' заполнено значением: $lastName" }
 
         step("Проверка корректности заполнения поля 'Имя'")
         assertEquals(
@@ -71,6 +78,7 @@ class RegistrationFormTest : BaseTest() {
             registrationFormPage.getFirstNameValue(),
             "Имя $firstName не было корректно заполнено",
         )
+        logger.info { "Проверка поля 'Имя' прошла успешно" }
 
         step("Проверка корректности заполнения поля 'Фамилия'")
         assertEquals(
@@ -78,6 +86,9 @@ class RegistrationFormTest : BaseTest() {
             registrationFormPage.getLastNameValue(),
             "Фамилия $lastName не была корректно заполнена",
         )
+        logger.info { "Проверка поля 'Фамилия' прошла успешно" }
+
+        logger.info { "Тест заполнения полей 'Имя' и 'Фамилия' завершен успешно" }
     }
 
     @Test
@@ -88,11 +99,16 @@ class RegistrationFormTest : BaseTest() {
     @Issue("REGFORM-125")
     @TmsLink("TC-458")
     fun testEmail() {
+        logger.info { "Начало теста заполнения поля 'Email'" }
+
         val email = FakerUtil.generateEmail()
         val registrationFormPage = RegistrationFormPage(page)
 
+        logger.debug { "Сгенерированный email: $email" }
+
         step("Заполнение поля 'Email' значением $email")
         registrationFormPage.enterEmail(email)
+        logger.info { "Поле 'Email' заполнено значением: $email" }
 
         step("Проверка корректности заполнения поля 'Email'")
         assertEquals(
@@ -100,6 +116,9 @@ class RegistrationFormTest : BaseTest() {
             registrationFormPage.getEmailValue(),
             "Email $email не был корректно заполнен",
         )
+        logger.info { "Проверка поля 'Email' прошла успешно" }
+
+        logger.info { "Тест заполнения поля 'Email' завершен успешно" }
     }
 
     @Test
@@ -110,11 +129,16 @@ class RegistrationFormTest : BaseTest() {
     @Issue("REGFORM-126")
     @TmsLink("TC-459")
     fun testPhoneNumber() {
+        logger.info { "Начало теста заполнения поля 'Номер телефона'" }
+
         val phoneNumber = FakerUtil.generatePhoneNumber()
         val registrationFormPage = RegistrationFormPage(page)
 
+        logger.debug { "Сгенерированный номер телефона: $phoneNumber" }
+
         step("Заполнение поля 'Номер телефона' значением $phoneNumber")
         registrationFormPage.enterPhoneNumber(phoneNumber)
+        logger.info { "Поле 'Номер телефона' заполнено значением: $phoneNumber" }
 
         step("Проверка корректности заполнения поля 'Номер телефона'")
         assertEquals(
@@ -122,6 +146,9 @@ class RegistrationFormTest : BaseTest() {
             registrationFormPage.getPhoneNumberValue(),
             "Номер телефона $phoneNumber не был корректно заполнен",
         )
+        logger.info { "Проверка поля 'Номер телефона' прошла успешно" }
+
+        logger.info { "Тест заполнения поля 'Номер телефона' завершен успешно" }
     }
 
     @Test
@@ -132,11 +159,16 @@ class RegistrationFormTest : BaseTest() {
     @Issue("REGFORM-127")
     @TmsLink("TC-460")
     fun testCurrentAddress() {
+        logger.info { "Начало теста заполнения поля 'Текущий адрес'" }
+
         val currentAddress = FakerUtil.generateCurrentAddress()
         val registrationFormPage = RegistrationFormPage(page)
 
+        logger.debug { "Сгенерированный текущий адрес: $currentAddress" }
+
         step("Заполнение поля 'Текущий адрес' значением $currentAddress")
         registrationFormPage.enterCurrentAddress(currentAddress)
+        logger.info { "Поле 'Текущий адрес' заполнено значением: $currentAddress" }
 
         step("Проверка корректности заполнения поля 'Текущий адрес'")
         assertEquals(
@@ -144,6 +176,9 @@ class RegistrationFormTest : BaseTest() {
             registrationFormPage.getCurrentAddressValue(),
             "Текущий адрес $currentAddress не был корректно заполнен",
         )
+        logger.info { "Проверка поля 'Текущий адрес' прошла успешно" }
+
+        logger.info { "Тест заполнения поля 'Текущий адрес' завершен успешно" }
     }
 
     @ParameterizedTest
@@ -155,10 +190,13 @@ class RegistrationFormTest : BaseTest() {
     @Issue("REGFORM-128")
     @TmsLink("TC-461")
     fun testGenderOption(gender: String) {
+        logger.info { "Начало теста выбора пола: $gender" }
+
         val registrationFormPage = RegistrationFormPage(page)
 
         step("Выбор пола '$gender'")
         registrationFormPage.selectGenderOption(gender)
+        logger.info { "Выбран пол: $gender" }
 
         step("Проверка выбора пола '$gender'")
         assertEquals(
@@ -166,6 +204,9 @@ class RegistrationFormTest : BaseTest() {
             registrationFormPage.getGenderValue(),
             "Пол '$gender' не был выбран",
         )
+        logger.info { "Проверка выбора пола '$gender' прошла успешно" }
+
+        logger.info { "Тест выбора пола '$gender' завершен успешно" }
     }
 
     @ParameterizedTest
@@ -177,16 +218,22 @@ class RegistrationFormTest : BaseTest() {
     @Issue("REGFORM-129")
     @TmsLink("TC-462")
     fun testSelectHobby(hobby: String) {
+        logger.info { "Начало теста выбора хобби: $hobby" }
+
         val registrationFormPage = RegistrationFormPage(page)
 
         step("Выбор хобби '$hobby'")
         registrationFormPage.selectHobby(hobby)
+        logger.info { "Выбрано хобби: $hobby" }
 
         step("Проверка выбора хобби '$hobby'")
         assertTrue(
             registrationFormPage.isHobbySelected(hobby),
             "Хобби '$hobby' не было выбрано",
         )
+        logger.info { "Проверка выбора хобби '$hobby' прошла успешно" }
+
+        logger.info { "Тест выбора хобби '$hobby' завершен успешно" }
     }
 
     @Test
@@ -197,12 +244,15 @@ class RegistrationFormTest : BaseTest() {
     @Issue("REGFORM-130")
     @TmsLink("TC-463")
     fun testSelectAllHobbies() {
+        logger.info { "Начало теста выбора всех хобби" }
+
         val registrationFormPage = RegistrationFormPage(page)
         val hobbies = listOf("Sports", "Reading", "Music")
 
         step("Выбор всех хобби")
         hobbies.forEach { hobby ->
             registrationFormPage.selectHobby(hobby)
+            logger.info { "Выбрано хобби: $hobby" }
         }
 
         step("Проверка выбора всех хобби")
@@ -211,7 +261,10 @@ class RegistrationFormTest : BaseTest() {
                 registrationFormPage.isHobbySelected(hobby),
                 "Хобби '$hobby' не было выбрано",
             )
+            logger.info { "Проверка выбора хобби '$hobby' прошла успешно" }
         }
+
+        logger.info { "Тест выбора всех хобби завершен успешно" }
     }
 
     @Test
@@ -222,11 +275,14 @@ class RegistrationFormTest : BaseTest() {
     @Issue("REGFORM-131")
     @TmsLink("TC-464")
     fun testSubjects() {
+        logger.info { "Начало теста заполнения поля 'Subjects'" }
+
         val registrationFormPage = RegistrationFormPage(page)
         val subjects = listOf("Maths", "English", "Hindi")
 
         step("Заполнение поля 'Subjects'")
         registrationFormPage.fillSubjects(subjects)
+        logger.info { "Заполнено поле 'Subjects' значениями: $subjects" }
 
         step("Проверка количества введенных предметов")
         val enteredSubjects = registrationFormPage.getSubjects()
@@ -235,6 +291,7 @@ class RegistrationFormTest : BaseTest() {
             enteredSubjects.size,
             "Количество введенных '$subjects' не совпадает",
         )
+        logger.info { "Проверка количества введенных предметов прошла успешно" }
 
         step("Проверка корректности введенных предметов")
         registrationFormPage.verifySubjects(subjects)
@@ -244,6 +301,9 @@ class RegistrationFormTest : BaseTest() {
                 actualSubjects.contains(expectedSubject),
                 "Ожидаемый предмет '$expectedSubject' не найден среди актуальных предметов",
             )
+            logger.info { "Проверка наличия предмета '$expectedSubject' прошла успешно" }
         }
+
+        logger.info { "Тест заполнения поля 'Subjects' завершен успешно" }
     }
 }
