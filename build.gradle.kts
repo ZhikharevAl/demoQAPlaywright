@@ -21,11 +21,20 @@ val agent: Configuration by configurations.creating {
 
 dependencies {
     testImplementation(kotlin("test"))
+
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.23.1")
+    implementation("org.apache.logging.log4j:log4j-api-kotlin:1.5.0")
+    implementation("org.apache.logging.log4j:log4j-api:2.23.1")
+    implementation("org.apache.logging.log4j:log4j-core:2.23.1")
+
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.3")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.3")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.3")
+
     implementation("com.microsoft.playwright:playwright:1.45.1")
+
     implementation("com.github.javafaker:javafaker:1.0.2")
+
     testImplementation(platform("io.qameta.allure:allure-bom:$allureVersion"))
     testImplementation("io.qameta.allure:allure-junit5")
     implementation("io.qameta.allure:allure-kotlin-commons:2.4.0")
