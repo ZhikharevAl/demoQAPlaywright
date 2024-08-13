@@ -17,6 +17,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import src.demoqa.pages.RegistrationFormPage
 import src.demoqa.utils.FakerUtil
+import java.nio.file.Paths
 import kotlin.test.assertTrue
 
 @Epic("Тестирование формы регистрации")
@@ -305,5 +306,29 @@ class RegistrationFormTest : BaseTest(), Logging {
         }
 
         logger.info { "Тест заполнения поля 'Subjects' завершен успешно" }
+    }
+
+    @Test
+    @DisplayName("Загрузка изображения")
+    @Description("Этот тест проверяет возможность загрузки изображения")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Пользователь может загрузить изображение")
+    @Issue("REGFORM-133")
+    @TmsLink("TC-466")
+    fun testUploadPicture() {
+        logger.info { "Начало теста загрузки изображения" }
+
+        val registrationFormPage = RegistrationFormPage(page)
+        val imagePath = Paths.get("src/test/resources/Battle_Star.jpg")
+
+        step("Загрузка изображения")
+        registrationFormPage.uploadPicture(imagePath)
+        logger.info { "Загружено изображение: $imagePath" }
+
+        step("Проверка загрузки изображения")
+        logger.info { "Проверка загрузки изображения" }
+        registrationFormPage.isPictureUploaded("src/test/resources/Battle_Star.jpg")
+
+        logger.info { "Тест загрузки изображения завершен успешно" }
     }
 }
