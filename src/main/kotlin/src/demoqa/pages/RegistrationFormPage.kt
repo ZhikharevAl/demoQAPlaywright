@@ -3,6 +3,7 @@ import com.microsoft.playwright.Page
 import io.qameta.allure.kotlin.Attachment
 import io.qameta.allure.kotlin.Description
 import io.qameta.allure.kotlin.Step
+import java.nio.file.Path
 import java.util.Locale
 
 object RegistrationFormLocators {
@@ -19,6 +20,7 @@ object RegistrationFormLocators {
     const val MUSIC_CHECKBOX = "label[for='hobbies-checkbox-3']"
     const val SUBJECTS = "#subjectsInput"
     const val SUBJECTS_ELEMENTS = ".subjects-auto-complete__multi-value__label"
+    const val UPLOAD_PICTURE = "#uploadPicture"
 }
 
 class RegistrationFormPage(page: Page) : BasePage(page) {
@@ -161,5 +163,18 @@ class RegistrationFormPage(page: Page) : BasePage(page) {
             Ожидаемые предметы: ${expected.joinToString(", ")}
             Фактические предметы: ${actual.joinToString(", ")}
             """.trimIndent()
+    }
+
+    @Step("Загрузка изображения: {filePath}")
+    @Description("Метод для загрузки изображения в форму регистрации")
+    fun uploadPicture(filePath: Path) {
+        findElement(RegistrationFormLocators.UPLOAD_PICTURE).setInputFiles(filePath)
+    }
+
+    @Step("Проверка загрузки изображения: {filePath}")
+    @Description("Метод для проверки успешной загрузки изображения")
+    fun isPictureUploaded(filePath: String): Boolean {
+        val uploadedFileName = findElement(RegistrationFormLocators.UPLOAD_PICTURE).inputValue()
+        return uploadedFileName.split("\\").last() == filePath.split("\\").last()
     }
 }
