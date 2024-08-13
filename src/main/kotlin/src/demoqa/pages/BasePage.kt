@@ -5,7 +5,7 @@ import com.microsoft.playwright.Page
 import io.qameta.allure.kotlin.Step
 
 abstract class BasePage(private val page: Page) {
-    private fun findElement(locator: String): Locator {
+    protected fun findElement(locator: String): Locator {
         return page.locator(locator)
     }
 
