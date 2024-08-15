@@ -103,19 +103,32 @@ class RegistrationFillingFormTest : BaseTest(), Logging {
         Thread.sleep(3000)
         step("Проверка отсутствия ошибок при заполнении формы")
         logger.info { "Проверка отсутствия ошибок при заполнении формы" }
-        assertFalse(registrationFormPage.hasErrors(), "На странице обнаружены ошибки при заполнении формы")
+        assertFalse(
+            registrationFormPage.hasErrors(),
+            "На странице обнаружены ошибки при заполнении формы",
+        )
 
         step("Проверка title страницы")
         logger.info { "Проверка title страницы" }
-        assertTrue(registrationFormPage.verifyRegistrationForm(title), "Title страницы не совпадает с $title")
+        assertTrue(
+            registrationFormPage.verifyRegistrationForm(title),
+            "Title страницы не совпадает с $title",
+        )
 
         step("Проверка всех заполненных полей")
         logger.info { "Проверка всех заполненных полей" }
         assertTrue(
             registrationFormPage.verifyRegistrationFormAll(
-                name = firstName, lastName = lastName, email = email,
-                phoneNumber = phoneNumber, currentAddress = currentAddress, birthDate = expectedDate,
-                gender = gender, hobby = hobbies, subjects = subjects, state = state, city = city,
+                name = firstName,
+                lastName = lastName,
+                email = email,
+                phoneNumber = phoneNumber,
+                currentAddress = currentAddress, birthDate = expectedDate,
+                gender = gender,
+                hobby = hobbies,
+                subjects = subjects,
+                state = state,
+                city = city,
                 img = img,
             ),
             "Проверка заполненных полей формы регистрации не прошла успешно",
