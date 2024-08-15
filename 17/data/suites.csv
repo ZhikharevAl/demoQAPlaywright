@@ -1,0 +1,30 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Aug 15 14:35:31 GMT 2024","Thu Aug 15 14:35:48 GMT 2024","16730","","RegistrationFormTest","","RegistrationFormTest","testGenderOption","Тест выбора пола [3] Other","Этот тест проверяет возможность выбора различных опций пола"
+"passed","Thu Aug 15 14:35:26 GMT 2024","Thu Aug 15 14:35:29 GMT 2024","3137","","RegistrationFormTest","","RegistrationFormTest","testGenderOption","Тест выбора пола [1] Male","Этот тест проверяет возможность выбора различных опций пола"
+"passed","Thu Aug 15 14:34:40 GMT 2024","Thu Aug 15 14:34:59 GMT 2024","18585","","RegistrationFormTest","","RegistrationFormTest","testUploadPicture","Загрузка изображения","Этот тест проверяет возможность загрузки изображения"
+"passed","Thu Aug 15 14:34:59 GMT 2024","Thu Aug 15 14:35:02 GMT 2024","3201","","RegistrationFormTest","","RegistrationFormTest","testPhoneNumber","Тест заполнения поля 'Номер телефона'","Этот тест проверяет корректность заполнения поля 'Номер телефона' в форме регистрации."
+"passed","Thu Aug 15 14:35:21 GMT 2024","Thu Aug 15 14:35:24 GMT 2024","3193","","RegistrationFormTest","","RegistrationFormTest","testSelectHobby","Выбор хобби [2] Reading","Этот тест проверяет возможность выбора различных хобби"
+"passed","Thu Aug 15 14:37:10 GMT 2024","Thu Aug 15 14:37:21 GMT 2024","10691","","RegistrationFormTest","","RegistrationFormTest","testSelectAllHobbies","Выбор всех хобби","Этот тест проверяет возможность выбора всех хобби одновременно"
+"passed","Thu Aug 15 14:35:04 GMT 2024","Thu Aug 15 14:35:11 GMT 2024","6548","","RegistrationFormTest","","RegistrationFormTest","testSubjects","Заполнение поля Subjects","Этот тест проверяет корректность заполнения поля 'Subjects'"
+"passed","Thu Aug 15 14:35:11 GMT 2024","Thu Aug 15 14:35:14 GMT 2024","3561","","RegistrationFormTest","","RegistrationFormTest","testEmail","Тест заполнения поля 'Email'","Этот тест проверяет корректность заполнения поля 'Email' в форме регистрации."
+"passed","Thu Aug 15 14:35:29 GMT 2024","Thu Aug 15 14:35:31 GMT 2024","1991","","RegistrationFormTest","","RegistrationFormTest","testGenderOption","Тест выбора пола [2] Female","Этот тест проверяет возможность выбора различных опций пола"
+"passed","Thu Aug 15 14:36:52 GMT 2024","Thu Aug 15 14:37:10 GMT 2024","18397","","RegistrationFormTest","","RegistrationFormTest","testFirstNameAndLastName","Тест заполнения полей 'Имя' и 'Фамилия'","Этот тест проверяет корректность заполнения полей 'Имя' и 'Фамилия' в форме регистрации."
+"passed","Thu Aug 15 14:36:32 GMT 2024","Thu Aug 15 14:36:52 GMT 2024","20137","","RegistrationFormTest","","RegistrationFormTest","testStateAndCitySelection","Проверка выбора штата и города [3] Haryana, Karnal","Этот тест проверяет, что после выбора значения для штата и города они сохраняются корректно"
+"passed","Thu Aug 15 14:35:48 GMT 2024","Thu Aug 15 14:35:59 GMT 2024","10814","","RegistrationFormTest","","RegistrationFormTest","testCurrentAddress","Тест заполнения поля 'Текущий адрес'","Этот тест проверяет корректность заполнения поля 'Текущий адрес' в форме регистрации."
+"passed","Thu Aug 15 14:35:02 GMT 2024","Thu Aug 15 14:35:04 GMT 2024","2510","","RegistrationFormTest","","RegistrationFormTest","overviewTest","overviewTest()","
+    <h2>Тестирование формы регистрации на сайте</h2>
+    <p>Этот набор тестов проверяет функциональность формы регистрации, включая:</p>
+    <ul>
+        <li>Заполнение всех полей формы</li>
+        <li>Выбор Имени и Фамилии</li>
+        <li>Выбор различных опций (пол, хобби, предметы)</li>
+        <li>Загрузку изображения</li>
+        <li>Выбор даты рождения</li>
+        <li>Выбор штата и города</li>
+    </ul>
+    "
+"passed","Thu Aug 15 14:35:24 GMT 2024","Thu Aug 15 14:35:26 GMT 2024","2439","","RegistrationFormTest","","RegistrationFormTest","testSelectHobby","Выбор хобби [3] Music","Этот тест проверяет возможность выбора различных хобби"
+"passed","Thu Aug 15 14:35:18 GMT 2024","Thu Aug 15 14:35:21 GMT 2024","2657","","RegistrationFormTest","","RegistrationFormTest","testSelectHobby","Выбор хобби [1] Sports","Этот тест проверяет возможность выбора различных хобби"
+"passed","Thu Aug 15 14:35:14 GMT 2024","Thu Aug 15 14:35:18 GMT 2024","3499","","RegistrationFormTest","","RegistrationFormTest","testDateOfBirth","Выбор даты рождения","Этот тест проверяет корректность выбора даты рождения"
+"broken","Thu Aug 15 14:35:59 GMT 2024","Thu Aug 15 14:36:29 GMT 2024","30433","","RegistrationFormTest","","RegistrationFormTest","testStateAndCitySelection","Проверка выбора штата и города [1] NCR, Delhi","Этот тест проверяет, что после выбора значения для штата и города они сохраняются корректно"
+"passed","Thu Aug 15 14:36:29 GMT 2024","Thu Aug 15 14:36:32 GMT 2024","2398","","RegistrationFormTest","","RegistrationFormTest","testStateAndCitySelection","Проверка выбора штата и города [2] Uttar Pradesh, Agra","Этот тест проверяет, что после выбора значения для штата и города они сохраняются корректно"
