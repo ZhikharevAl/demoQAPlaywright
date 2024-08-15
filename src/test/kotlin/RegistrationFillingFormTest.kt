@@ -100,7 +100,6 @@ class RegistrationFillingFormTest : BaseTest(), Logging {
         step("Нажатие кнопки 'Заполнить форму регистрации'")
         logger.info { "Нажатие кнопки 'Заполнить форму регистрации'" }
         registrationFormPage.clickSubmit()
-        Thread.sleep(3000)
         step("Проверка отсутствия ошибок при заполнении формы")
         logger.info { "Проверка отсутствия ошибок при заполнении формы" }
         assertFalse(
@@ -123,7 +122,8 @@ class RegistrationFillingFormTest : BaseTest(), Logging {
                 lastName = lastName,
                 email = email,
                 phoneNumber = phoneNumber,
-                currentAddress = currentAddress, birthDate = expectedDate,
+                currentAddress = currentAddress,
+                birthDate = expectedDate,
                 gender = gender,
                 hobby = hobbies,
                 subjects = subjects,
