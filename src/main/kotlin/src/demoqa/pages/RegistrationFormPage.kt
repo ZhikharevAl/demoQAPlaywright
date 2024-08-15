@@ -25,6 +25,7 @@ object RegistrationFormLocators {
     const val STATE_INPUT = "#react-select-3-input"
     const val CITY = "Select City"
     const val CITY_INPUT = "#react-select-4-input"
+    const val DATE_OF_BIRTH = "#dateOfBirthInput"
 }
 
 class RegistrationFormPage(page: Page) : BasePage(page) {
@@ -208,5 +209,19 @@ class RegistrationFormPage(page: Page) : BasePage(page) {
     @Description("Метод для проверки выбора населенного пункта")
     fun verifyCity(city: String): Boolean {
         return containsText(city)
+    }
+
+    @Step("Выбор даты рождения")
+    @Description("Метод для выбора даты рождения")
+    fun selectDateOfBirth(date: String) {
+        click(RegistrationFormLocators.DATE_OF_BIRTH)
+        fill(RegistrationFormLocators.DATE_OF_BIRTH, date)
+        pressEnter()
+    }
+
+    @Step("Проверка выбора даты рождения")
+    @Description("Метод для проверки выбора даты рождения")
+    fun verifyDateOfBirth(date: String): Boolean {
+        return containsText(date)
     }
 }
