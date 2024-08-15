@@ -254,10 +254,18 @@ class RegistrationFormPage(page: Page) : BasePage(page) {
         city: String,
         img: String,
     ): Boolean {
-        return containsText(name) && containsText(email) && containsText(lastName) && containsText(phoneNumber) &&
-            containsText(currentAddress) && containsText(birthDate) && containsText(gender) &&
-            containsText(hobby.joinToString(", ")) && containsText(subjects.joinToString(", ")) &&
-            containsText(state) && containsText(city) && containsText(img)
+        return containsText(name) &&
+            containsText(email) &&
+            containsText(lastName) &&
+            containsText(phoneNumber) &&
+            containsText(currentAddress) &&
+            containsText(birthDate) &&
+            containsText(gender) &&
+            containsText(hobby.joinToString(", ")) &&
+            containsText(subjects.joinToString(", ")) &&
+            containsText(state) &&
+            containsText(city) &&
+            containsText(img)
     }
 
     @Step("Проверка наличия ошибок на странице")
