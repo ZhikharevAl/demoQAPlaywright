@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import src.demoqa.pages.RegistrationFormPage
 import src.demoqa.utils.FakerUtil
@@ -330,5 +331,39 @@ class RegistrationFormTest : BaseTest(), Logging {
         registrationFormPage.isPictureUploaded("src/test/resources/Battle_Star.jpg")
 
         logger.info { "Тест загрузки изображения завершен успешно" }
+    }
+
+    @ParameterizedTest
+    @MethodSource("data.TestDataProvider#stateAndCityProvider")
+    @DisplayName("Проверка выбора штата и города")
+    @Description("Этот тест проверяет, что после выбора значения для штата и города они сохраняются корректно")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Пользователь может выбрать штат и город")
+    fun testStateAndCitySelection(
+        state: String,
+        city: String,
+    ) {
+        logger.info { "Начало теста выбора штата и города" }
+        val registrationFormPage = RegistrationFormPage(page)
+
+        step("Выбор штата и города")
+        logger.info { "Выбор штата '$state' и города '$city'" }
+        registrationFormPage.selectState(state)
+        registrationFormPage.selectCity(city)
+
+        step("Проверка выбранного штата")
+        logger.info { "Проверка выбора штата '$state'" }
+        assertTrue(
+            registrationFormPage.verifyState(state),
+            "Штат '$state' не был корректно выбран",
+        )
+
+        step("Проверка выбранного города")
+        logger.info { "Проверка выбора города '$city'" }
+        assertTrue(
+            registrationFormPage.verifyCity(city),
+            "Город '$city' не был корректно выбран",
+        )
+        logger.info { "Тест выбора штата и города завершен успешно" }
     }
 }
