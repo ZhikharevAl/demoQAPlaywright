@@ -45,7 +45,7 @@ class RegistrationFormTest : BaseTest(), Logging {
     )
     @Severity(SeverityLevel.BLOCKER)
     @Link("https://demoqa.com/automation-practice-form", name = "Registration Form")
-    fun overviewTest() {
+    fun `overviewTest`() {
         // Этот тест может быть пустым или содержать общую логику
         // Его основная цель - предоставить общее описание для отчета Allure
     }
@@ -54,10 +54,10 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Story("Пользователь может заполнить имя и фамилию")
     @DisplayName("Тест заполнения полей 'Имя' и 'Фамилия'")
     @Description("Этот тест проверяет корректность заполнения полей 'Имя' и 'Фамилия' в форме регистрации.")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.BLOCKER)
     @Issue("REGFORM-124")
     @TmsLink("TC-457")
-    fun testFirstNameAndLastName() {
+    fun `testFirstNameAndLastName`() {
         logger.info { "Начало теста заполнения полей 'Имя' и 'Фамилия'" }
 
         val firstName = FakerUtil.generateName()
@@ -100,7 +100,7 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Severity(SeverityLevel.NORMAL)
     @Issue("REGFORM-125")
     @TmsLink("TC-458")
-    fun testEmail() {
+    fun `testEmail`() {
         logger.info { "Начало теста заполнения поля 'Email'" }
 
         val email = FakerUtil.generateEmail()
@@ -127,10 +127,10 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Story("Пользователь может заполнить номер телефона")
     @DisplayName("Тест заполнения поля 'Номер телефона'")
     @Description("Этот тест проверяет корректность заполнения поля 'Номер телефона' в форме регистрации.")
-    @Severity(SeverityLevel.NORMAL)
+    @Severity(SeverityLevel.BLOCKER)
     @Issue("REGFORM-126")
     @TmsLink("TC-459")
-    fun testPhoneNumber() {
+    fun `testPhoneNumber`() {
         logger.info { "Начало теста заполнения поля 'Номер телефона'" }
 
         val phoneNumber = FakerUtil.generatePhoneNumber()
@@ -160,7 +160,7 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Severity(SeverityLevel.NORMAL)
     @Issue("REGFORM-127")
     @TmsLink("TC-460")
-    fun testCurrentAddress() {
+    fun `testCurrentAddress`() {
         logger.info { "Начало теста заполнения поля 'Текущий адрес'" }
 
         val currentAddress = FakerUtil.generateCurrentAddress()
@@ -188,10 +188,10 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Story("Пользователь может выбрать пол")
     @DisplayName("Тест выбора пола")
     @Description("Этот тест проверяет возможность выбора различных опций пола")
-    @Severity(SeverityLevel.NORMAL)
+    @Severity(SeverityLevel.BLOCKER)
     @Issue("REGFORM-128")
     @TmsLink("TC-461")
-    fun testGenderOption(gender: String) {
+    fun `testGenderOption`(gender: String) {
         logger.info { "Начало теста выбора пола: $gender" }
 
         val registrationFormPage = RegistrationFormPage(page)
@@ -215,11 +215,11 @@ class RegistrationFormTest : BaseTest(), Logging {
     @ValueSource(strings = ["Sports", "Reading", "Music"])
     @DisplayName("Выбор хобби")
     @Description("Этот тест проверяет возможность выбора различных хобби")
-    @Severity(SeverityLevel.NORMAL)
+    @Severity(SeverityLevel.TRIVIAL)
     @Story("Пользователь может выбрать различные хобби")
     @Issue("REGFORM-129")
     @TmsLink("TC-462")
-    fun testSelectHobby(hobby: String) {
+    fun `testSelectHobby`(hobby: String) {
         logger.info { "Начало теста выбора хобби: $hobby" }
 
         val registrationFormPage = RegistrationFormPage(page)
@@ -245,7 +245,7 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Story("Пользователь может выбрать все хобби")
     @Issue("REGFORM-130")
     @TmsLink("TC-463")
-    fun testSelectAllHobbies() {
+    fun `testSelectAllHobbies`() {
         logger.info { "Начало теста выбора всех хобби" }
 
         val registrationFormPage = RegistrationFormPage(page)
@@ -276,7 +276,7 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Story("Пользователь может заполнить поле 'Subjects'")
     @Issue("REGFORM-131")
     @TmsLink("TC-464")
-    fun testSubjects() {
+    fun `testSubjects`() {
         logger.info { "Начало теста заполнения поля 'Subjects'" }
 
         val registrationFormPage = RegistrationFormPage(page)
@@ -316,7 +316,7 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Story("Пользователь может загрузить изображение")
     @Issue("REGFORM-133")
     @TmsLink("TC-466")
-    fun testUploadPicture() {
+    fun `testUploadPicture`() {
         logger.info { "Начало теста загрузки изображения" }
 
         val registrationFormPage = RegistrationFormPage(page)
@@ -339,7 +339,9 @@ class RegistrationFormTest : BaseTest(), Logging {
     @Description("Этот тест проверяет, что после выбора значения для штата и города они сохраняются корректно")
     @Severity(SeverityLevel.NORMAL)
     @Story("Пользователь может выбрать штат и город")
-    fun testStateAndCitySelection(
+    @Issue("REGFORM-134")
+    @TmsLink("TC-467")
+    fun `testStateAndCitySelection`(
         state: String,
         city: String,
     ) {
@@ -365,5 +367,31 @@ class RegistrationFormTest : BaseTest(), Logging {
             "Город '$city' не был корректно выбран",
         )
         logger.info { "Тест выбора штата и города завершен успешно" }
+    }
+
+    @Test
+    @DisplayName("Выбор даты рождения")
+    @Description("Этот тест проверяет корректность выбора даты рождения")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Пользователь может выбрать дату рождения")
+    @Issue("REGFORM-135")
+    @TmsLink("TC-468")
+    fun `testDateOfBirth`() {
+        logger.info { "Начало теста выбора даты рождения" }
+        val registrationFormPage = RegistrationFormPage(page)
+        val date = "03 March 1998"
+        val expectedDate = "03 Mar 1998"
+
+        step("Выбор даты рождения")
+        logger.info { "Выбор даты рождения '$date'" }
+        registrationFormPage.selectDateOfBirth(date)
+
+        step("Проверка выбранной даты рождения")
+        logger.info { "Проверка выбора даты рождения '$expectedDate'" }
+        assertTrue(
+            registrationFormPage.verifyDateOfBirth(expectedDate),
+            "Дата рождения '$expectedDate' не была корректно выбрана",
+        )
+        logger.info { "Тест выбора даты рождения завершен успешно" }
     }
 }
