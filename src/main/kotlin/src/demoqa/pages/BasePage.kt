@@ -40,4 +40,12 @@ abstract class BasePage(private val page: Page) {
     protected fun getElementsTexts(locator: String): List<String> {
         return page.locator(locator).allInnerTexts()
     }
+
+    protected fun getByText(text: String): Locator {
+        return page.getByText(text)
+    }
+
+    protected fun containsText(text: String): Boolean {
+        return page.content().contains(text)
+    }
 }
