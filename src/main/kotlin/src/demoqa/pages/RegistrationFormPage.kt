@@ -26,6 +26,7 @@ object RegistrationFormLocators {
     const val CITY = "Select City"
     const val CITY_INPUT = "#react-select-4-input"
     const val DATE_OF_BIRTH = "#dateOfBirthInput"
+    const val SUBMIT = "#submit"
 }
 
 class RegistrationFormPage(page: Page) : BasePage(page) {
@@ -223,5 +224,45 @@ class RegistrationFormPage(page: Page) : BasePage(page) {
     @Description("Метод для проверки выбора даты рождения")
     fun verifyDateOfBirth(date: String): Boolean {
         return containsText(date)
+    }
+
+    @Step("Нажать кнопку 'Submit'")
+    @Description("Метод для нажатия кнопки 'Submit'")
+    fun clickSubmit() {
+        click(RegistrationFormLocators.SUBMIT)
+    }
+
+    @Step("Проверка формы регистрации")
+    @Description("Метод для проверки формы регистрации")
+    fun verifyRegistrationForm(title: String): Boolean {
+        return containsText(title)
+    }
+
+    @Step("Проверка формы регистрации")
+    @Description("Метод для проверки формы регистрации")
+    fun verifyRegistrationFormAll(
+        name: String,
+        email: String,
+        lastName: String,
+        phoneNumber: String,
+        currentAddress: String,
+        birthDate: String,
+        gender: String,
+        hobby: List<String>,
+        subjects: List<String>,
+        state: String,
+        city: String,
+        img: String,
+    ): Boolean {
+        return containsText(name) && containsText(email) && containsText(lastName) && containsText(phoneNumber) &&
+            containsText(currentAddress) && containsText(birthDate) && containsText(gender) &&
+            containsText(hobby.joinToString(", ")) && containsText(subjects.joinToString(", ")) &&
+            containsText(state) && containsText(city) && containsText(img)
+    }
+
+    @Step("Проверка наличия ошибок на странице")
+    @Description("Метод для проверки наличия ошибок на странице")
+    fun hasErrors(): Boolean {
+        return findElement(".has-error").isVisible
     }
 }
