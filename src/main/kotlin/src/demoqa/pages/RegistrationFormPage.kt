@@ -21,6 +21,10 @@ object RegistrationFormLocators {
     const val SUBJECTS = "#subjectsInput"
     const val SUBJECTS_ELEMENTS = ".subjects-auto-complete__multi-value__label"
     const val UPLOAD_PICTURE = "#uploadPicture"
+    const val STATE = "Select State"
+    const val STATE_INPUT = "#react-select-3-input"
+    const val CITY = "Select City"
+    const val CITY_INPUT = "#react-select-4-input"
 }
 
 class RegistrationFormPage(page: Page) : BasePage(page) {
@@ -176,5 +180,33 @@ class RegistrationFormPage(page: Page) : BasePage(page) {
     fun isPictureUploaded(filePath: String): Boolean {
         val uploadedFileName = findElement(RegistrationFormLocators.UPLOAD_PICTURE).inputValue()
         return uploadedFileName.split("\\").last() == filePath.split("\\").last()
+    }
+
+    @Step("Выбор штата: {state}")
+    @Description("Метод для выбора штата в форме регистрации")
+    fun selectState(state: String) {
+        getByText(RegistrationFormLocators.STATE)
+        fill(RegistrationFormLocators.STATE_INPUT, state)
+        pressEnter()
+    }
+
+    @Step("Выбор населенного пункта: {city}")
+    @Description("Метод для выбора населенного пункта в форме регистрации")
+    fun selectCity(city: String) {
+        getByText(RegistrationFormLocators.CITY)
+        fill(RegistrationFormLocators.CITY_INPUT, city)
+        pressEnter()
+    }
+
+    @Step("Проверка выбора штата")
+    @Description("Метод для проверки выбора штата")
+    fun verifyState(state: String): Boolean {
+        return containsText(state)
+    }
+
+    @Step("Проверка выбора населенного пункта")
+    @Description("Метод для проверки выбора населенного пункта")
+    fun verifyCity(city: String): Boolean {
+        return containsText(city)
     }
 }
